@@ -3,9 +3,10 @@ import openai
 import os
 os.environ['openai_key'] = api_key
 openai.api_key = os.environ['openai_key']
+"""
 keep_prompting = True
 while keep_prompting:
-    prompt = input("What is your question? Type exit if done!!")
+    prompt = input("What is your question? Type exit if done!!\n")
     if prompt.lower() == 'exit':
         keep_prompting = False
     else:
@@ -13,3 +14,8 @@ while keep_prompting:
 # for code model try to replace 'text-davinci-003' by 'code-davinci-002' to just output only code
 
     print(response['choices'][0]['text'])
+"""
+
+def get_answer(question):
+    response = openai.Completion.create(engine='text-davinci-003', prompt= question,max_tokens=4000)
+    return response['choices'][0]['text']
