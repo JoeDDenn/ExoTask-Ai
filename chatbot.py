@@ -8,6 +8,6 @@ while keep_prompting:
         keep_prompting = False
         break
     else:
-        output = llm(prompt)
+        output = llm(prompt, temperature=0.7, top_p=1)
         print(output['choices'][0]['text'],end='',flush=True)
 
