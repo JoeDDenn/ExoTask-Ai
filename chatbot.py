@@ -10,7 +10,7 @@ while keep_prompting:
         keep_prompting = False
         break
     else:
-        output = llm(prompt, temperature=0.7, top_p=1, max_tokens=499)
+        output = llm(prompt, temperature=0.7, top_p=1, max_tokens=490)
         choices = output['choices']
         for choice in choices:
             if 'Assistant' in choice['text']:
