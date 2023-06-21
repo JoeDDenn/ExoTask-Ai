@@ -1,3 +1,4 @@
+
 # api_key = "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"
 # import openai
 # import os
@@ -48,3 +49,4 @@ def get_answer(input_text):
     output_text = tokenizer.decode(outputs[0], skip_special_tokens=True)
 
     return output_text.strip()
+
