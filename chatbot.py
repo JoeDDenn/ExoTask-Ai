@@ -1,19 +1,11 @@
-from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
+from transformers import pipeline
 
-# Load the model and tokenizer
-tokenizer = AutoTokenizer.from_pretrained("declare-lab/flan-alpaca-large")
-model = AutoModelForSeq2SeqLM.from_pretrained("declare-lab/flan-alpaca-large")
-
-
-def get_answer(input_text):
-    # Tokenize your prompt text
-    inputs = tokenizer.encode(input_text, return_tensors="pt")
-
-    # Generate a response using the model
-    outputs = model.generate(inputs, max_length=128)
-    
-    # Decode and print the generated output
-    output_text = tokenizer.decode(outputs[0], skip_special_tokens=True)
-
-    return output_text.strip()
-
+flag = True
+while flag:
+    prompt = input("write a prompt or exit to quit ")
+    if prompt =='exit':
+        flag = False
+    else:
+        model_name = "declare-lab/flan-alpaca-gpt4-xl"
+        chatbot = pipeline("text2text-generation", model=model_name)
+        print(chatbot(prompt)[0]["generated_text"])
